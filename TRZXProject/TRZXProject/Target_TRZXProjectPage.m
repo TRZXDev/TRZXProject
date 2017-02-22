@@ -7,13 +7,13 @@
 //
 
 #import "Target_TRZXProjectPage.h"
-#import "TRZXProjectPageController.h"
+#import "TRZXProjectPageViewController.h"
 
 @implementation Target_TRZXProjectPage
 
-- (UIViewController *)Action_ProjectPageController;
+- (UIViewController *)Action_ProjectPageViewController;
 {
-    TRZXProjectPageController *confirmFinancingVC = [[TRZXProjectPageController alloc] init];
+    TRZXProjectPageViewController *confirmFinancingVC = [[TRZXProjectPageViewController alloc] init];
     return confirmFinancingVC;
 }
 

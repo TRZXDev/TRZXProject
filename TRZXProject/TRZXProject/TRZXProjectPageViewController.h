@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WMPageController.h"
-@interface TRZXProjectPageController : WMPageController
+@interface TRZXProjectPageViewController : WMPageController
 
 @end

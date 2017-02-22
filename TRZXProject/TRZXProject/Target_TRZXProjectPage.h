@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface Target_TRZXProjectPage : NSObject
-- (UIViewController *)Action_ProjectPageController;
+- (UIViewController *)Action_ProjectPageViewController;
 @end

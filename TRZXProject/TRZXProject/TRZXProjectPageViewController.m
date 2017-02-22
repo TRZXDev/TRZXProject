@@ -6,13 +6,13 @@
 //  Copyright © 2017年 TRZX. All rights reserved.
 //
 
-#import "TRZXProjectPageController.h"
+#import "TRZXProjectPageViewController.h"
 #import "TRZXHotProjectViewController.h"
 #import "TRZXAllProjectViewController.h"
 #import "TRZXKit.h"
 #import <TRZXProjectScreeningBusinessCategory/CTMediator+TRZXProjectScreening.h>
 
-@interface TRZXProjectPageController ()
+@interface TRZXProjectPageViewController ()
 
 @property (strong, nonatomic) TRZXHotProjectViewController *hotProjectViewController; //
 @property (strong, nonatomic) TRZXAllProjectViewController *allProjectViewController; //
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation TRZXProjectPageController
+@implementation TRZXProjectPageViewController
 
 
 
@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.title = @"融资项目";
 
     [self setRightBarItemImage:[UIImage imageNamed:@"筛选"] title:@"筛选"];
 
