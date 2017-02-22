@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TRZXProject"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "TRZXProject."
 
   # This description is used to generate tags and improve search results.
@@ -92,6 +92,8 @@ TRZXProject
   #
 
   s.source_files  = "TRZXProject/TRZXProject/**/*.{h,m}"
+  s.resources    = 'TRZXProject/TRZXProject/**/*.{xib,png}'
+
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
