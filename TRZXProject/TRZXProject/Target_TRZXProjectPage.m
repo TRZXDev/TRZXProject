@@ -11,10 +11,11 @@
 
 @implementation Target_TRZXProjectPage
 
-- (UIViewController *)Action_ProjectPageViewController;
+- (UIViewController *)Action_ProjectPageViewController:(NSDictionary *)params;
 {
-    TRZXProjectPageViewController *confirmFinancingVC = [[TRZXProjectPageViewController alloc] init];
-    return confirmFinancingVC;
+    TRZXProjectPageViewController *projectPageVC = [[TRZXProjectPageViewController alloc] init];
+    projectPageVC.projectTitle = params[@"projectTitle"];
+    return projectPageVC;
 }
 
 @end

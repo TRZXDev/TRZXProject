@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"融资项目";
+    self.title = self.projectTitle;
 
     [self setRightBarItemImage:[UIImage imageNamed:@"筛选"] title:@"筛选"];
 

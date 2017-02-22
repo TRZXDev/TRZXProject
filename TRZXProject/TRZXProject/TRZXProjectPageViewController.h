@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WMPageController.h"
 @interface TRZXProjectPageViewController : WMPageController
+@property (nonatomic, copy) NSString *projectTitle;
 
 @end
