@@ -10,10 +10,12 @@
 #import "TRZXProjectViewModel.h"
 #import "TRZXProjectCell.h"
 #import "TRZXKit.h"
+#import "TRZXDIYRefresh.h"
 @interface TRZXAllProjectViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *hotProjectTableView;
 @property (strong, nonatomic) TRZXProjectViewModel *projectViewModel;
-
+@property (strong, nonatomic) NSString *trade; //领域
+@property (strong, nonatomic) NSString *stage; //阶段
 @end
 
 @implementation TRZXAllProjectViewController
@@ -23,26 +25,55 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:self.hotProjectTableView];
 
-    [self requestSignal_allProject];
 
     // Do any additional setup after loading the view.
 }
+-(void)refreshTrade:(NSString*)trade stage:(NSString*)stage{
 
+    self.projectViewModel.trade = trade;
+    self.projectViewModel.stage = stage;
+    [self.hotProjectTableView.mj_header beginRefreshing];
+}
+
+- (void)refresh{
+
+    self.projectViewModel.willLoadMore = NO;
+    [self.hotProjectTableView.mj_footer resetNoMoreData];
+    [self requestSignal_hotProject];
+}
+
+- (void)refreshMore{
+    if (!self.projectViewModel.canLoadMore) {
+        [self.hotProjectTableView.mj_footer setState:MJRefreshStateNoMoreData];
+        return;
+    }
+    self.projectViewModel.willLoadMore = YES;
+    [self requestSignal_hotProject];
+}
 
 // 发起请求
-- (void)requestSignal_allProject {
+- (void)requestSignal_hotProject {
 
 
     [self.projectViewModel.requestSignal_allProject subscribeNext:^(id x) {
 
+        // 结束刷新状态
+        if (self.projectViewModel.willLoadMore) {
+            [self.hotProjectTableView.mj_footer endRefreshing];
+        }else{
+            [self.hotProjectTableView.mj_header endRefreshing];
+        }
+
         // 请求完成后，更新UI
+
         [self.hotProjectTableView reloadData];
 
     } error:^(NSError *error) {
         // 如果请求失败，则根据error做出相应提示
-
+        
     }];
 }
+
 
 
 
@@ -54,7 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _projectViewModel.listArray.count;
+    return _projectViewModel.list.count;
 
 }
 
@@ -68,7 +99,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:kCellIdentifier_TRZXProjectCell owner:self options:nil] lastObject];
     }
 
-    TRZXProject *project = [_projectViewModel.listArray objectAtIndex:indexPath.row];
+    TRZXProject *project = [_projectViewModel.list objectAtIndex:indexPath.row];
     cell.project = project;
 
     return cell;
@@ -97,6 +128,20 @@
         // 去除顶部空白
         _hotProjectTableView.tableHeaderView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGFLOAT_MIN, CGFLOAT_MIN)];;
         _hotProjectTableView.tableFooterView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGFLOAT_MIN, CGFLOAT_MIN)];;
+        // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+        _hotProjectTableView.mj_header = [TRZXGifHeader headerWithRefreshingBlock:^{
+            // 刷新数据
+            [self refresh];
+        }];
+        [ self.hotProjectTableView.mj_header beginRefreshing];
+
+        // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadLastData方法）
+        _hotProjectTableView.mj_footer = [TRZXGifFooter footerWithRefreshingBlock:^{
+            [self refreshMore];
+
+        }];
+        _hotProjectTableView.mj_footer.automaticallyHidden = YES;
+
 
 
     }

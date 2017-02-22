@@ -14,6 +14,10 @@
 
 @interface TRZXProjectPageController ()
 
+@property (strong, nonatomic) TRZXHotProjectViewController *hotProjectViewController; //
+@property (strong, nonatomic) TRZXAllProjectViewController *allProjectViewController; //
+@property (strong, nonatomic) UIViewController *projectScreeningVC; //
+
 @end
 
 @implementation TRZXProjectPageController
@@ -55,14 +59,9 @@
  */
 - (void)rightBarItemAction:(UITapGestureRecognizer *)gesture{
 
-    UIViewController *projectScreeningVC = [[CTMediator sharedInstance] projectScreeningViewControllerWithScreeningType:@"1" projectTitle:@"项目筛选" confirmComplete:^(NSString *trade, NSString *stage) {
-
-        NSLog(@">>>>>>>>>>>>>%@=====^%@",trade,stage);
-
-
-    }];
-    if (projectScreeningVC) {
-        [self.navigationController pushViewController:projectScreeningVC animated:true];
+    self.projectScreeningVC.hidesBottomBarWhenPushed = YES;
+    if (self.projectScreeningVC) {
+        [self.navigationController pushViewController:self.projectScreeningVC animated:true];
     }
 
 
@@ -82,17 +81,13 @@
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     switch (index) {
         case 0: {
-            TRZXHotProjectViewController *vc = [[TRZXHotProjectViewController alloc] init];
-            vc.age = @22;
-            return vc;
+            self.hotProjectViewController = [[TRZXHotProjectViewController alloc] init];
+            return self.hotProjectViewController;
         }
             break;
         case 1: {
-            TRZXAllProjectViewController *vc = [[TRZXAllProjectViewController alloc] init];
-            vc.name = @"Mark";
-            vc.desc = @"I will be happy if you star this repo.";
-            NSLog(@">>>>>>>>>>>>>I will be happy if you star this repo.");
-            return vc;
+            self.allProjectViewController = [[TRZXAllProjectViewController alloc] init];
+            return self.allProjectViewController;
         }
         default: {
             return [[UIViewController alloc] init];
@@ -133,7 +128,19 @@
 }
 
 
-
+-(UIViewController *)projectScreeningVC{
+    if (!_projectScreeningVC) {
+        _projectScreeningVC = [[CTMediator sharedInstance] projectScreeningViewControllerWithScreeningType:@"1" projectTitle:@"项目筛选" confirmComplete:^(NSString *trade, NSString *stage) {
+            if (self.selectIndex==0) {
+                [self.hotProjectViewController refreshTrade:trade stage:stage];
+            }else{
+                [self.allProjectViewController refreshTrade:trade stage:stage];
+            }
+            
+        }];
+    }
+    return _projectScreeningVC;
+}
 
 /*
 #pragma mark - Navigation

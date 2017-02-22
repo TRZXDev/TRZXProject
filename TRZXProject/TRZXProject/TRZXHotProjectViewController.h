@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface TRZXHotProjectViewController : UIViewController
-@property (nonatomic, strong) NSNumber *age;
+
+
+
+-(void)refreshTrade:(NSString*)trade stage:(NSString*)stage;
+
+
 
 @end

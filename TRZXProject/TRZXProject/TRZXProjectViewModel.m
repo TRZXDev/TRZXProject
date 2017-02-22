@@ -10,6 +10,13 @@
 #import "MJExtension.h"
 
 @implementation TRZXProjectViewModel
+
++(NSDictionary *)objectClassInArray{
+    return @{@"list":[TRZXProject class]};
+}
+
+
+
 - (instancetype)init
 {
     self = [super init];
@@ -50,8 +57,11 @@
             [TRZXNetwork requestWithUrl:nil params:self.toHotParams method:GET cachePolicy:NetworkingReloadIgnoringLocalCacheData callbackBlock:^(id response, NSError *error) {
 
                 if (response) {
-                    self.listArray = [TRZXProject mj_objectArrayWithKeyValuesArray:response[@"list"]];
-                    [subscriber sendNext:self.listArray];
+
+                    TRZXProjectViewModel *projectModel = [TRZXProjectViewModel mj_objectWithKeyValues:response];
+                    [self configWithObj:projectModel];
+
+                    [subscriber sendNext:self];
                     [subscriber sendCompleted];
 
                 }else{
@@ -68,6 +78,25 @@
     }
     return _requestSignal_hotProject;
 }
+
+
+- (void)configWithObj:(TRZXProjectViewModel *)model{
+
+    self.pageNo = model.pageNo;
+    self.pageSize = model.pageSize;
+    self.totalPage = model.totalPage;
+
+    if (_willLoadMore) {
+        [self.list addObjectsFromArray:model.list];
+    }else{
+        self.list = [NSMutableArray arrayWithArray:model.list];
+    }
+    _canLoadMore = _pageNo.intValue < _totalPage.intValue&&_totalPage.intValue>1;
+    
+}
+
+
+
 
 
 -(NSDictionary *)toAllParams{
@@ -93,8 +122,9 @@
             [TRZXNetwork requestWithUrl:nil params:self.toAllParams method:GET cachePolicy:NetworkingReloadIgnoringLocalCacheData callbackBlock:^(id response, NSError *error) {
 
                 if (response) {
-                    self.listArray = [TRZXProject mj_objectArrayWithKeyValuesArray:response[@"list"]];
-                    [subscriber sendNext:self.listArray];
+                    TRZXProjectViewModel *projectModel = [TRZXProjectViewModel mj_objectWithKeyValues:response];
+                    [self configWithObj:projectModel];
+                    [subscriber sendNext:self];
                     [subscriber sendCompleted];
 
                 }else{

@@ -22,7 +22,7 @@
 @property (strong, nonatomic) RACSignal *requestSignal_allProject; ///< 全部项目
 
 
-@property (readwrite, nonatomic, strong) NSMutableArray *listArray; // 市场项目列表
+@property (readwrite, nonatomic, strong) NSMutableArray *list; // 市场项目列表
 
 
 

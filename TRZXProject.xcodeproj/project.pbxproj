@@ -23,6 +23,7 @@
 		71782C7D1E5BF3D400CDCA2A /* TRZXProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 71782C7C1E5BF3D400CDCA2A /* TRZXProject.m */; };
 		71782C811E5BF7A900CDCA2A /* TRZXProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71782C7F1E5BF7A900CDCA2A /* TRZXProjectCell.m */; };
 		71782C821E5BF7A900CDCA2A /* TRZXProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71782C801E5BF7A900CDCA2A /* TRZXProjectCell.xib */; };
+		718EBD831E5D2840000FD589 /* Target_TRZXProjectPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 718EBD821E5D2840000FD589 /* Target_TRZXProjectPage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		71782C7E1E5BF7A900CDCA2A /* TRZXProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZXProjectCell.h; sourceTree = "<group>"; };
 		71782C7F1E5BF7A900CDCA2A /* TRZXProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZXProjectCell.m; sourceTree = "<group>"; };
 		71782C801E5BF7A900CDCA2A /* TRZXProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRZXProjectCell.xib; sourceTree = "<group>"; };
+		718EBD811E5D2840000FD589 /* Target_TRZXProjectPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_TRZXProjectPage.h; sourceTree = "<group>"; };
+		718EBD821E5D2840000FD589 /* Target_TRZXProjectPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_TRZXProjectPage.m; sourceTree = "<group>"; };
 		811445A74CCB45BFCD474C8D /* Pods-TRZXProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TRZXProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TRZXProject/Pods-TRZXProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,8 @@
 		71782C631E5BD6A600CDCA2A /* TRZXProject */ = {
 			isa = PBXGroup;
 			children = (
+				718EBD811E5D2840000FD589 /* Target_TRZXProjectPage.h */,
+				718EBD821E5D2840000FD589 /* Target_TRZXProjectPage.m */,
 				71782C671E5BDA0100CDCA2A /* TRZXProjectPageController.h */,
 				71782C681E5BDA0100CDCA2A /* TRZXProjectPageController.m */,
 				71782C6A1E5BDDDB00CDCA2A /* TRZXHotProjectViewController.h */,
@@ -291,6 +296,7 @@
 				71782C7A1E5BF0DB00CDCA2A /* TRZXProjectViewModel.m in Sources */,
 				71782C6C1E5BDDDB00CDCA2A /* TRZXHotProjectViewController.m in Sources */,
 				71782C691E5BDA0100CDCA2A /* TRZXProjectPageController.m in Sources */,
+				718EBD831E5D2840000FD589 /* Target_TRZXProjectPage.m in Sources */,
 				71782C4E1E5BD5FE00CDCA2A /* main.m in Sources */,
 				71782C7D1E5BF3D400CDCA2A /* TRZXProject.m in Sources */,
 			);

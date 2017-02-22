@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TRZXAllProjectViewController : UIViewController
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *desc;
+
+-(void)refreshTrade:(NSString*)trade stage:(NSString*)stage;
+
 @end
