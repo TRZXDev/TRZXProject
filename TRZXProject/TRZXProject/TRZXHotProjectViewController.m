@@ -124,7 +124,7 @@
     if (!_hotProjectTableView) {
         // 内容视图
         _hotProjectTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _hotProjectTableView.frame = CGRectMake(0, 0, self.view.width, self.view.height-158);
+        _hotProjectTableView.frame = CGRectMake(0, 0, self.view.width, self.view.height-109);
         _hotProjectTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _hotProjectTableView.dataSource = self;
         _hotProjectTableView.delegate = self;

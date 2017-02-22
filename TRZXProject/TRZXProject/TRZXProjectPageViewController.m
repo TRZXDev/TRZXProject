@@ -40,8 +40,8 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
 
+    NSInteger viewTop = 64;
     
-
     self.menuViewStyle = WMMenuViewStyleLine;
     self.titleSizeSelected = 14.0f;
     self.titleSizeNormal = 14.0f;
@@ -51,6 +51,8 @@
     self.menuBGColor = [UIColor whiteColor];
     self.menuHeight = 45;
     self.titles = @[@"推荐项目", @"海量项目"];
+    self.viewFrame = CGRectMake(0, viewTop, self.view.width, self.view.height - viewTop);
+
     [self reloadData];
 
     // Do any additional setup after loading the view.
@@ -61,7 +63,6 @@
  */
 - (void)rightBarItemAction:(UITapGestureRecognizer *)gesture{
 
-    self.projectScreeningVC.hidesBottomBarWhenPushed = YES;
     if (self.projectScreeningVC) {
         [self.navigationController pushViewController:self.projectScreeningVC animated:true];
     }
@@ -84,11 +85,13 @@
     switch (index) {
         case 0: {
             self.hotProjectViewController = [[TRZXHotProjectViewController alloc] init];
+//            self.hotProjectViewController.view.frame =  self.viewFrame;
             return self.hotProjectViewController;
         }
             break;
         case 1: {
             self.allProjectViewController = [[TRZXAllProjectViewController alloc] init];
+//            self.allProjectViewController.view.frame =  self.viewFrame;
             return self.allProjectViewController;
         }
         default: {
