@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="1332" y="854"/>
         </scene>
-        <!--Project Page Controller-->
+        <!--Project Page View Controller-->
         <scene sceneID="hAn-lW-zWv">
             <objects>
-                <viewController id="0cx-Oe-ZBB" customClass="TRZXProjectPageController" sceneMemberID="viewController">
+                <viewController id="0cx-Oe-ZBB" customClass="TRZXProjectPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ByN-CO-FjB"/>
                         <viewControllerLayoutGuide type="bottom" id="7FB-4v-uGw"/>

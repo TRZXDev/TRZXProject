@@ -45,9 +45,10 @@
     self.menuViewStyle = WMMenuViewStyleLine;
     self.titleSizeSelected = 14.0f;
     self.titleSizeNormal = 14.0f;
-    self.titleColorSelected = [UIColor trzx_RedColor];
-    self.titleColorNormal = [UIColor trzx_NavTitleColor];
+    self.titleColorSelected = [UIColor trzx_NavTitleColor];
+    self.titleColorNormal = [UIColor trzx_TextColor];
     self.progressWidth = self.view.width/4;
+    self.progressColor = [UIColor redColor];
     self.menuBGColor = [UIColor whiteColor];
     self.menuHeight = 45;
     self.titles = @[@"推荐项目", @"海量项目"];
@@ -85,13 +86,11 @@
     switch (index) {
         case 0: {
             self.hotProjectViewController = [[TRZXHotProjectViewController alloc] init];
-//            self.hotProjectViewController.view.frame =  self.viewFrame;
             return self.hotProjectViewController;
         }
             break;
         case 1: {
             self.allProjectViewController = [[TRZXAllProjectViewController alloc] init];
-//            self.allProjectViewController.view.frame =  self.viewFrame;
             return self.allProjectViewController;
         }
         default: {
