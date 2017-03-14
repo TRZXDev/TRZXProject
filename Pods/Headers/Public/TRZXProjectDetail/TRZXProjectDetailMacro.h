@@ -1,0 +1,1 @@
+../../../TRZXProjectDetail/TRZXProjectDetail/TRZXProjectDetail/Tool/TRZXProjectDetailMacro.h

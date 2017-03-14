@@ -15,6 +15,10 @@ target 'TRZXProject' do
         pod 'TRZXProjectScreening' # 项目筛选
         pod 'TRZXProjectScreeningBusinessCategory' # 项目筛选跳转组件
 
+        pod 'TRZXProjectDetail' # 项目详情
+        pod 'TRZXProjectDetailCategory' # 项目详情中间组件
+
+
 
   # Pods for TRZXProject
 

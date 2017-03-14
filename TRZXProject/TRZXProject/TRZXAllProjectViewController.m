@@ -11,6 +11,8 @@
 #import "TRZXProjectCell.h"
 #import "TRZXKit.h"
 #import "TRZXDIYRefresh.h"
+#import "TRZXProjectDetailCategory/CTMediator+TRZXProjectDetail.h"
+
 @interface TRZXAllProjectViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *hotProjectTableView;
 @property (strong, nonatomic) TRZXProjectViewModel *projectViewModel;
@@ -109,6 +111,9 @@
 {
     //行被选中后，自动变回反选状态的方法
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TRZXProject *project = [_projectViewModel.list objectAtIndex:indexPath.row];
+    UIViewController *projectDetailVC = [[CTMediator sharedInstance] projectDetailViewController:project.mid];
+    [self.navigationController pushViewController:projectDetailVC animated:true];
 
 
 
